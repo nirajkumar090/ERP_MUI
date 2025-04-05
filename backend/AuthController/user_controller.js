@@ -40,9 +40,9 @@ const userLogin = async(req,res)=>{
         return res.status(201).send({msg:"Invaild credentails !"})
     }
 
-    const result = await bcrypt.compare(password,User.password);
+    const result = await bcrypt.compare(password,userExist.password);
 
-    if(result.ok){
+    if(result){
         res.status(200).send({msg:"Login Successfully !"})
     }else{
         res.status(201).send({msg:"Invaild Credentials"})
